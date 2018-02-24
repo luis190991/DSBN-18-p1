@@ -7,7 +7,7 @@ import java.awt.*;
 /**
  * Created by luis on 09/02/18.
  */
-public class Animal {
+public class Animal extends Object{
 
     private Genero genero;
     private Color color;
@@ -81,5 +81,10 @@ public class Animal {
 
     public void setHiberna(Boolean hiberna) {
         this.hiberna = hiberna;
+    }
+
+    @Override
+    public String toString() {
+        return String.format("Hola soy un animal y mi genero es %s - %s - %s", this.genero, this.altura, this.peso);
     }
 }
