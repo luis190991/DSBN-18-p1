@@ -33,6 +33,11 @@ public class Elephant extends Herbivorous implements Consumidor, Runnable, Clone
 
     }
 
+    public String manzanas(Integer numero){
+
+        return numero >=5? "Tengo 5 o más manzanas" : "No tengo 5 o más manzanas";
+    }
+
 
 
 }

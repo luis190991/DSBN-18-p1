@@ -1,11 +1,14 @@
 package models;
 
+import com.sun.source.tree.AssertTree;
 import models.animals.Deer;
 import models.animals.Elephant;
 import models.animals.Lion;
 import models.animals.Zebra;
 import models.enums.Genero;
 import models.interfaces.Consumidor;
+import models.subtypes.Carnivorous;
+import models.subtypes.Herbivorous;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -35,13 +38,24 @@ public class AnimalTest {
         List<Consumidor> animals = new ArrayList<>();
         Deer d = new Deer();
         Elephant e = new Elephant();
+
+        System.out.println(e instanceof Elephant);
+        System.out.println(e instanceof Herbivorous);
+        Carnivorous c = new Lion();
+        System.out.println(c instanceof Lion);
+        System.out.println(c instanceof Carnivorous);
+        Herbivorous er = new Herbivorous();
+        System.out.println(er instanceof Herbivorous);
+        System.out.println(er instanceof Elephant);
         Lion l = new Lion();
         Zebra z = new Zebra();
+        Zebra z2 = new Zebra();
         z.correr(5, "recio", "despacio", "rapido", "lento");
 
         animals.add(d);
         animals.add(e);
         animals.add(l);
+
 
         for(int i = 0; i < animals.size(); i++){
             System.out.println(animals.get(i));
@@ -63,5 +77,25 @@ public class AnimalTest {
         });
 
 
+    }
+
+    @Test
+    public void instanceTest(){
+        Carnivorous puma = new Carnivorous() {
+
+            @Override
+            public String hablar(String x, Integer y){
+                return null;
+            }
+        };
+    }
+
+
+    @Test
+    public void probarManzanas(){
+        Elephant e = new Elephant();
+        Assert.assertTrue("Tengo 5 o más manzanas".equals(e.manzanas(5)));
+        Assert.assertTrue("Tengo 5 o más manzanas".equals(e.manzanas(6)));
+        Assert.assertTrue("No tengo 5 o más manzanas".equals(e.manzanas(4)));
     }
 }
